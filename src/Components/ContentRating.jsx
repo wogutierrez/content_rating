@@ -13,8 +13,12 @@ class ContentRating extends Component {
 
         handleLike: () => {
             this.setState( (prevState) => ({ 
-                likes: prevState.likes + 1
+                likes: prevState.likes + 1,
             }));
+
+            this.setState( (prevState) => ({
+                totalRating: prevState.totalRating + 1
+            })); 
 
         },
 
@@ -22,11 +26,14 @@ class ContentRating extends Component {
             this.setState( (prevState) => ({
                 dislikes: prevState.dislikes + 1
             }));
+
+            this.setState( (prevState) => ({
+                totalRating: prevState.totalRating + 1
+            })); 
+
         }
     };
   }
-
-
 
   render() {
     return (
@@ -48,9 +55,9 @@ class ContentRating extends Component {
             </div>
 
             <div className='totalRating'>
-                {this.state.totalRating}
+               Total Rating:  {this.state.totalRating}
             </div>
-            
+
         </div>
     </>
     );
