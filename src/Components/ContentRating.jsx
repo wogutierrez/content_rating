@@ -8,30 +8,51 @@ class ContentRating extends Component {
 
     this.state = {
         likes: 0,
-        dislikes: 0
+        dislikes: 0,
+        totalRating: 0,
+
+        handleLike: () => {
+            this.setState( (prevState) => ({ 
+                likes: prevState.likes + 1
+            }));
+
+        },
+
+        handleDisLike: () => {
+            this.setState( (prevState) => ({
+                dislikes: prevState.dislikes + 1
+            }));
+        }
     };
-
-
   }
+
+
+
   render() {
     return (
      <>
      
-     <div className='content-rating'></div>
-        <p>
-            //Add text here
-        </p>
-         <div className='rating-buttons'>
-            <button className="like-buttons">
-                Like ({this.state.likes})
-            </button>
+        <div className='content-rating'>
+            <p>
+                This is a test to see how the React App works
+            </p>
+            <div className='rating-buttons'>
 
-            <button className="dislike-button">
-                Dislike ({this.state.dislikes})
-            </button>
+                <button className="like-buttons" onClick={this.state.handleLike}>
+                    Like ({this.state.likes})
+                </button>
 
-         </div>
-     </>
+                <button className="dislike-button" onClick={this.state.handleDisLike}>
+                    Dislike ({this.state.dislikes})
+                </button>
+            </div>
+
+            <div className='totalRating'>
+                {this.state.totalRating}
+            </div>
+            
+        </div>
+    </>
     );
   }
 }
